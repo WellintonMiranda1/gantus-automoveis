@@ -1366,3 +1366,16 @@ a {
     .hero h1 { font-size: 47px; }
     .brand-logo { width: 170px; }
 }
+
+
+/* CIVIC REAL — card integrado ao estoque/destaques */
+.civic-showcase-visual {
+    background-position: center 56%;
+    filter: none !important;
+}
+.civic-stock-image {
+    background:
+        linear-gradient(180deg, transparent 55%, rgba(0,0,0,.34)),
+        url("../assets/vehicles/civic-lxs-2008/01-capa.png") center 56% / cover no-repeat !important;
+    filter: none !important;
+}
