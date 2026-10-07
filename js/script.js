@@ -230,3 +230,18 @@ function updateGantusStory() {
 window.addEventListener("scroll", updateGantusStory, { passive: true });
 window.addEventListener("resize", updateGantusStory);
 updateGantusStory();
+
+
+// =========================
+// FILTROS MOBILE — ABRIR / FECHAR
+// =========================
+const mobileFilterToggle = document.querySelector("#mobileFilterToggle");
+const inventoryToolsMobile = document.querySelector("#inventoryTools");
+
+if (mobileFilterToggle && inventoryToolsMobile) {
+    mobileFilterToggle.addEventListener("click", () => {
+        const open = inventoryToolsMobile.classList.toggle("filters-open");
+        mobileFilterToggle.classList.toggle("is-open", open);
+        mobileFilterToggle.setAttribute("aria-expanded", String(open));
+    });
+}

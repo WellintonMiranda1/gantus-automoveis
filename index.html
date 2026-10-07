@@ -184,10 +184,14 @@
                         <p class="section-eyebrow">ESTOQUE COMPLETO</p>
                         <h2>Todos os carros.<br>Do seu jeito.</h2>
                     </div>
-                    <p class="section-description">Encontre rápido o veículo ideal usando busca e filtros. No sistema final, esta área será alimentada diretamente pelo painel administrativo.</p>
+                    <p class="section-description">Encontre o veículo ideal de forma rápida e simples. Use a busca e os filtros para explorar nosso estoque.</p>
                 </div>
 
-                <div class="inventory-tools reveal-on-scroll">
+                <button class="mobile-filter-toggle" id="mobileFilterToggle" type="button" aria-expanded="false" aria-controls="inventoryTools">
+                    <span>Filtros</span><span class="filter-toggle-icon">+</span>
+                </button>
+
+                <div class="inventory-tools reveal-on-scroll" id="inventoryTools">
                     <label class="inventory-search">
                         <span>⌕</span>
                         <input id="inventorySearch" type="search" placeholder="Buscar por marca ou modelo">
