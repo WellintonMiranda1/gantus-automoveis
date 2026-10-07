@@ -1,75 +1,338 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Gantus Automóveis — encontre seu próximo carro.">
-  <title>Gantus Automóveis</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gantus Automóveis</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header class="header">
-    <a class="brand" href="#inicio" aria-label="Gantus Automóveis">
-      <span class="brand-mark">G</span>
-      <span>GANTUS AUTOMÓVEIS</span>
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="#inicio" class="brand">
+            <img
+                src="assets/logo/logo-gantus.png"
+                alt="Gantus Automóveis"
+                class="brand-logo"
+            >
+        </a>
+
+        <nav class="nav">
+            <a href="#inicio">Início</a>
+            <a href="#estoque">Estoque</a>
+            <a href="#sobre">Sobre a Gantus</a>
+            <a href="#contato">Contato</a>
+        </nav>
+
+        <button class="menu-button" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+<!-- HERO -->
+<section class="hero" id="inicio">
+
+    <!-- Cenário -->
+    <div class="hero-background"></div>
+
+    <!-- Escurecimento para leitura -->
+    <div class="hero-overlay"></div>
+
+    <!-- Conteúdo -->
+    <div class="hero-content">
+
+        <p class="hero-eyebrow">GANTUS AUTOMÓVEIS</p>
+
+        <h1>
+            Seu próximo carro<br>
+            começa aqui.
+        </h1>
+
+        <p class="hero-description">
+            Encontre o carro certo para o seu próximo capítulo.
+        </p>
+
+        <a href="#estoque" class="hero-button">
+            Ver estoque
+        </a>
+
+    </div>
+
+    <!-- Indicador de scroll -->
+    <a href="#estoque" class="scroll-indicator">
+        <span>CONHEÇA NOSSO ESTOQUE</span>
+        <span class="scroll-arrow">↓</span>
     </a>
 
-    <nav class="nav" aria-label="Navegação principal">
-      <a href="#inicio">Início</a>
-      <a href="#estoque">Estoque</a>
-      <a href="#sobre">Sobre a Gantus</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
+</section>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-content">
-        <p class="eyebrow">GANTUS AUTOMÓVEIS</p>
-        <h1>Seu próximo carro começa aqui.</h1>
-        <p class="hero-text">
-          Uma experiência direta, moderna e segura para encontrar o carro certo.
-        </p>
-        <a class="button" href="#estoque">Ver estoque</a>
-      </div>
 
-      <a class="scroll-cue" href="#estoque">Conheça nosso estoque ↓</a>
-    </section>
+        <!-- DESTAQUES -->
+        <section class="inventory" id="estoque">
 
-    <section class="section" id="estoque">
-      <p class="eyebrow">ESTOQUE</p>
-      <h2>Veículos disponíveis</h2>
-      <p class="section-copy">
-        Aqui entraremos com os veículos cadastrados pelo painel administrativo.
-      </p>
+            <div class="section-container">
 
-      <div class="vehicle-placeholder">
-        <span>Próxima etapa</span>
-        <strong>Cards, filtros e integração com o estoque.</strong>
-      </div>
-    </section>
+                <p class="section-eyebrow reveal-on-scroll reveal-delay-1">
+                    DESTAQUES GANTUS
+                </p>
 
-    <section class="section section-dark" id="sobre">
-      <p class="eyebrow">SOBRE</p>
-      <h2>A experiência Gantus.</h2>
-      <p class="section-copy">
-        Esta área receberá a história, os diferenciais e as imagens institucionais da marca.
-      </p>
-    </section>
+                <h2 class="reveal-on-scroll reveal-delay-2">
+                    Escolhas que merecem<br>
+                    destaque.
+                </h2>
 
-    <section class="section" id="contato">
-      <p class="eyebrow">CONTATO</p>
-      <h2>Fale com um vendedor.</h2>
-      <p class="section-copy">
-        Na próxima etapa configuraremos o contato real e as mensagens automáticas do WhatsApp.
-      </p>
-    </section>
-  </main>
+                <p class="section-description reveal-on-scroll reveal-delay-3">
+                    Uma seleção especial da Gantus. Novidades, oportunidades e veículos que merecem estar no centro da vitrine.
+                </p>
 
-  <footer class="footer">
-    <p>Gantus Automóveis</p>
-  </footer>
+                <div class="inventory-showcase reveal-on-scroll reveal-delay-4" aria-label="Carrossel demonstrativo do estoque">
+                    <button class="carousel-arrow carousel-arrow-left" type="button" aria-label="Veículo anterior">‹</button>
 
-  <script src="js/script.js"></script>
+                    <div class="vehicle-carousel" id="vehicleCarousel">
+                        <article class="showcase-card" data-index="0" style="--vehicle-image: url('../assets/hero/hero-gantus-camaro.png')">
+                            <div class="showcase-visual"><span class="vehicle-badge">NOVIDADE</span></div>
+                            <div class="showcase-content">
+                                <p class="showcase-year">2024</p>
+                                <h3>Volkswagen Polo Highline</h3>
+                                <div class="showcase-details"><span>32.000 km</span><span>Automático</span><span>Flex</span></div>
+                                <div class="showcase-bottom"><strong>R$ 109.900</strong><a href="#contato">Ver condições</a></div>
+                            </div>
+                        </article>
+
+                        <article class="showcase-card" data-index="1" style="--vehicle-image: url('../assets/hero/hero-gantus-camaro.png')">
+                            <div class="showcase-visual showcase-tone-2"></div>
+                            <div class="showcase-content">
+                                <p class="showcase-year">2023</p><h3>Jeep Compass Limited</h3>
+                                <div class="showcase-details"><span>41.500 km</span><span>Automático</span><span>Flex</span></div>
+                                <div class="showcase-bottom"><strong>R$ 149.900</strong><a href="#contato">Ver condições</a></div>
+                            </div>
+                        </article>
+
+                        <article class="showcase-card" data-index="2" style="--vehicle-image: url('../assets/hero/hero-gantus-camaro.png')">
+                            <div class="showcase-visual showcase-tone-3"><span class="vehicle-badge">CONDIÇÃO IMPERDÍVEL</span></div>
+                            <div class="showcase-content">
+                                <p class="showcase-year">2022</p><h3>Toyota Corolla Altis</h3>
+                                <div class="showcase-details"><span>48.000 km</span><span>Automático</span><span>Flex</span></div>
+                                <div class="showcase-bottom"><strong>R$ 139.900</strong><a href="#contato">Ver condições</a></div>
+                            </div>
+                        </article>
+
+                        <article class="showcase-card" data-index="3" style="--vehicle-image: url('../assets/hero/hero-gantus-camaro.png')">
+                            <div class="showcase-visual showcase-tone-4"></div>
+                            <div class="showcase-content">
+                                <p class="showcase-year">2024</p><h3>Honda HR-V Touring</h3>
+                                <div class="showcase-details"><span>18.900 km</span><span>Automático</span><span>Flex</span></div>
+                                <div class="showcase-bottom"><strong>R$ 179.900</strong><a href="#contato">Ver condições</a></div>
+                            </div>
+                        </article>
+
+                        <article class="showcase-card" data-index="4" style="--vehicle-image: url('../assets/hero/hero-gantus-camaro.png')">
+                            <div class="showcase-visual showcase-tone-5"><span class="vehicle-badge">2º DONO</span></div>
+                            <div class="showcase-content">
+                                <p class="showcase-year">2023</p><h3>Volkswagen T-Cross Highline</h3>
+                                <div class="showcase-details"><span>29.700 km</span><span>Automático</span><span>Flex</span></div>
+                                <div class="showcase-bottom"><strong>R$ 134.900</strong><a href="#contato">Ver condições</a></div>
+                            </div>
+                        </article>
+
+                        <article class="showcase-card" data-index="5" style="--vehicle-image: url('../assets/hero/hero-gantus-camaro.png')">
+                            <div class="showcase-visual showcase-tone-6"></div>
+                            <div class="showcase-content">
+                                <p class="showcase-year">2022</p><h3>Chevrolet Tracker Premier</h3>
+                                <div class="showcase-details"><span>36.200 km</span><span>Automático</span><span>Flex</span></div>
+                                <div class="showcase-bottom"><strong>R$ 126.900</strong><a href="#contato">Ver condições</a></div>
+                            </div>
+                        </article>
+
+                        <article class="showcase-card" data-index="6" style="--vehicle-image: url('../assets/hero/hero-gantus-camaro.png')">
+                            <div class="showcase-visual showcase-tone-7"><span class="vehicle-badge">BAIXA KM</span></div>
+                            <div class="showcase-content">
+                                <p class="showcase-year">2023</p><h3>BMW 320i M Sport</h3>
+                                <div class="showcase-details"><span>22.400 km</span><span>Automático</span><span>Gasolina</span></div>
+                                <div class="showcase-bottom"><strong>R$ 289.900</strong><a href="#contato">Ver condições</a></div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <button class="carousel-arrow carousel-arrow-right" type="button" aria-label="Próximo veículo">›</button>
+                    <div class="carousel-dots" aria-label="Navegação do estoque"></div>
+                </div>
+
+                <p class="inventory-demo-note reveal-on-scroll">* Veículos e valores demonstrativos para apresentação do layout.</p>
+                <a class="see-all-stock reveal-on-scroll" href="#estoque-completo">Ver estoque completo ↓</a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ESTOQUE COMPLETO -->
+        <section class="full-inventory" id="estoque-completo">
+            <div class="section-container">
+                <div class="full-inventory-heading reveal-on-scroll">
+                    <div>
+                        <p class="section-eyebrow">ESTOQUE COMPLETO</p>
+                        <h2>Todos os carros.<br>Do seu jeito.</h2>
+                    </div>
+                    <p class="section-description">Encontre rápido o veículo ideal usando busca e filtros. No sistema final, esta área será alimentada diretamente pelo painel administrativo.</p>
+                </div>
+
+                <div class="inventory-tools reveal-on-scroll">
+                    <label class="inventory-search">
+                        <span>⌕</span>
+                        <input id="inventorySearch" type="search" placeholder="Buscar por marca ou modelo">
+                    </label>
+                    <select id="brandFilter" aria-label="Filtrar por marca">
+                        <option value="">Marca</option><option>Volkswagen</option><option>Jeep</option><option>Toyota</option><option>Honda</option><option>Chevrolet</option><option>BMW</option>
+                    </select>
+                    <select id="yearFilter" aria-label="Filtrar por ano">
+                        <option value="">Ano</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option>
+                    </select>
+                    <select id="kmFilter" aria-label="Filtrar por quilometragem">
+                        <option value="">Quilometragem</option><option value="30000">Até 30 mil km</option><option value="50000">Até 50 mil km</option><option value="80000">Até 80 mil km</option>
+                    </select>
+                    <select id="transmissionFilter" aria-label="Filtrar por câmbio">
+                        <option value="">Câmbio</option><option>Automático</option><option>Manual</option>
+                    </select>
+                </div>
+
+                <div class="stock-grid" id="stockGrid">
+                    <article class="stock-card" data-brand="Volkswagen" data-year="2024" data-km="32000" data-transmission="Automático">
+                        <div class="stock-image"><span class="vehicle-badge">NOVIDADE</span></div>
+                        <div class="stock-body"><p>2024</p><h3>Volkswagen Polo Highline</h3><div class="stock-specs"><span>32.000 km</span><span>Automático</span><span>Flex</span></div><div class="stock-price">R$ 109.900</div><a href="#contato">Ver condições</a></div>
+                    </article>
+                    <article class="stock-card" data-brand="Jeep" data-year="2023" data-km="41500" data-transmission="Automático">
+                        <div class="stock-image stock-image-2"><span class="vehicle-badge">2º DONO</span></div>
+                        <div class="stock-body"><p>2023</p><h3>Jeep Compass Limited</h3><div class="stock-specs"><span>41.500 km</span><span>Automático</span><span>Flex</span></div><div class="stock-price">R$ 149.900</div><a href="#contato">Ver condições</a></div>
+                    </article>
+                    <article class="stock-card" data-brand="Toyota" data-year="2022" data-km="48000" data-transmission="Automático">
+                        <div class="stock-image stock-image-3"><span class="vehicle-badge">CONDIÇÃO ESPECIAL</span></div>
+                        <div class="stock-body"><p>2022</p><h3>Toyota Corolla Altis</h3><div class="stock-specs"><span>48.000 km</span><span>Automático</span><span>Flex</span></div><div class="stock-price">R$ 139.900</div><a href="#contato">Ver condições</a></div>
+                    </article>
+                    <article class="stock-card" data-brand="Honda" data-year="2024" data-km="18900" data-transmission="Automático">
+                        <div class="stock-image stock-image-4"><span class="vehicle-badge">BAIXA KM</span></div>
+                        <div class="stock-body"><p>2024</p><h3>Honda HR-V Touring</h3><div class="stock-specs"><span>18.900 km</span><span>Automático</span><span>Flex</span></div><div class="stock-price">R$ 179.900</div><a href="#contato">Ver condições</a></div>
+                    </article>
+                    <article class="stock-card" data-brand="Chevrolet" data-year="2023" data-km="36200" data-transmission="Automático">
+                        <div class="stock-image stock-image-5"><span class="vehicle-badge">OPORTUNIDADE</span></div>
+                        <div class="stock-body"><p>2023</p><h3>Chevrolet Tracker Premier</h3><div class="stock-specs"><span>36.200 km</span><span>Automático</span><span>Flex</span></div><div class="stock-price">R$ 126.900</div><a href="#contato">Ver condições</a></div>
+                    </article>
+                    <article class="stock-card" data-brand="BMW" data-year="2023" data-km="22400" data-transmission="Automático">
+                        <div class="stock-image stock-image-6"><span class="vehicle-badge">PREMIUM</span></div>
+                        <div class="stock-body"><p>2023</p><h3>BMW 320i M Sport</h3><div class="stock-specs"><span>22.400 km</span><span>Automático</span><span>Gasolina</span></div><div class="stock-price">R$ 289.900</div><a href="#contato">Ver condições</a></div>
+                    </article>
+                </div>
+                <p class="stock-empty" id="stockEmpty">Nenhum veículo encontrado com esses filtros.</p>
+                <p class="inventory-demo-note">* Veículos, dados e valores demonstrativos para apresentação do layout.</p>
+            </div>
+        </section>
+
+        <!-- HISTÓRIA GANTUS -->
+        <section class="gantus-story" id="sobre">
+            <div class="story-intro">
+                <p class="story-kicker">A HISTÓRIA GANTUS</p>
+                <h2>NÃO COMEÇOU<br>COM CARROS.</h2>
+                <p>Role para descobrir como uma vontade de fazer negócio virou Gantus Automóveis.</p>
+            </div>
+
+            <div class="story-track" aria-hidden="true">
+                <span class="story-track-progress"></span>
+            </div>
+
+            <div class="story-chapters">
+                <article class="story-chapter" data-story-step="1">
+                    <span class="story-number">01</span>
+                    <div class="story-copy">
+                        <p class="story-label">COMEÇOU COM VONTADE.</p>
+                        <h3>Antes da loja,<br>veio a iniciativa.</h3>
+                        <p>Aos 13 anos, um patinete e a vontade de fazer negócio já mostravam que ficar parado nunca foi uma opção.</p>
+                    </div>
+                </article>
+
+                <article class="story-chapter story-chapter-right" data-story-step="2">
+                    <span class="story-number">02</span>
+                    <div class="story-copy">
+                        <p class="story-label">DEPOIS VIERAM AS RAPADURAS.</p>
+                        <h3>Vender também é<br>entender pessoas.</h3>
+                        <p>Vieram as primeiras experiências de venda, negociação e relacionamento. Pequenos negócios ensinando grandes fundamentos.</p>
+                    </div>
+                </article>
+
+                <article class="story-chapter" data-story-step="3">
+                    <span class="story-number">03</span>
+                    <div class="story-copy">
+                        <p class="story-label">DEPOIS, OS PRIMEIROS CARROS.</p>
+                        <h3>Um negócio construído<br>todos os dias.</h3>
+                        <p>Anúncios pela manhã, respostas à tarde, organização, persistência e cada oportunidade tratada como se fosse a mais importante.</p>
+                    </div>
+                </article>
+
+                <article class="story-chapter story-chapter-right" data-story-step="4">
+                    <span class="story-number">04</span>
+                    <div class="story-copy">
+                        <p class="story-label">ENTÃO VIROU GANTUS.</p>
+                        <h3>Família. Processo.<br>Reputação.</h3>
+                        <p>O que começou pequeno ganhou estrutura, identidade e uma operação construída carro por carro, cliente por cliente.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="story-finale">
+                <p>HOJE, NÃO VENDEMOS APENAS CARROS.</p>
+                <h2>Construímos o próximo<br>capítulo de quem chega até aqui.</h2>
+                <strong>GANTUS AUTOMÓVEIS</strong>
+            </div>
+        </section>
+
+
+
+
+        <!-- CONTATO -->
+        <section class="contact" id="contato">
+
+            <div class="section-container">
+
+                <p class="section-eyebrow">
+                    CONTATO
+                </p>
+
+                <h2>
+                    Encontrou o carro<br>
+                    que estava procurando?
+                </h2>
+
+                <a href="#" class="contact-button">
+                    Falar com um vendedor
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <img
+            src="assets/logo/logo-gantus.png"
+            alt="Gantus Automóveis"
+        >
+
+        <p>Gantus Automóveis</p>
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
 </body>
 </html>
