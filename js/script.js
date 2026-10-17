@@ -56,7 +56,7 @@ if ("IntersectionObserver" in window) {
 const carousel = document.querySelector("#vehicleCarousel");
 
 if (carousel) {
-    const cards = [...carousel.querySelectorAll(".showcase-card")];
+    let cards = [...carousel.querySelectorAll(".showcase-card")];
     const prevButton = document.querySelector(".carousel-arrow-left");
     const nextButton = document.querySelector(".carousel-arrow-right");
     const dotsContainer = document.querySelector(".carousel-dots");
@@ -73,7 +73,8 @@ if (carousel) {
         dotsContainer.appendChild(dot);
     });
 
-    const dots = [...dotsContainer.querySelectorAll(".carousel-dot")];
+    let dots = [...dotsContainer.querySelectorAll(".carousel-dot")];
+    window.addEventListener("gantus:deliveries-updated",()=>{cards=[...carousel.querySelectorAll(".showcase-card")];dotsContainer.innerHTML="";cards.forEach((_,index)=>{const dot=document.createElement("button");dot.className="carousel-dot";dot.type="button";dot.setAttribute("aria-label",`Ver entrega ${index+1}`);dot.addEventListener("click",()=>{activeIndex=index;renderCarousel()});dotsContainer.appendChild(dot)});dots=[...dotsContainer.children];activeIndex=0;if(cards.length)renderCarousel()});
 
     function circularOffset(index) {
         let offset = index - activeIndex;
@@ -95,6 +96,7 @@ if (carousel) {
     }
 
     function move(direction) {
+        if(!cards.length)return;
         activeIndex = (activeIndex + direction + cards.length) % cards.length;
         renderCarousel();
     }
@@ -139,7 +141,8 @@ const brandFilter = document.querySelector("#brandFilter");
 const yearFilter = document.querySelector("#yearFilter");
 const kmFilter = document.querySelector("#kmFilter");
 const transmissionFilter = document.querySelector("#transmissionFilter");
-const stockCards = [...document.querySelectorAll(".stock-card")];
+let stockCards = [...document.querySelectorAll(".stock-card")];
+window.addEventListener("gantus:stock-updated",()=>{stockCards=[...document.querySelectorAll(".stock-card")];filterStock()});
 const stockEmpty = document.querySelector("#stockEmpty");
 
 function filterStock() {

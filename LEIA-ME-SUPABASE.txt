@@ -1,7 +1,11 @@
-1. Abra Supabase > SQL Editor > New query e execute INSTALAR-SUPABASE.sql.
-2. Entre em /admin/ com o e-mail e senha do usuário criado no Supabase.
-3. Teste cadastrando e editando itens. Os registros ficam em public.site_content e os uploads no bucket gantus-media.
-4. IMPORTANTE: este pacote integra login, CRUD e uploads no painel; a vitrine pública ainda usa os dados estáticos existentes e precisa ser ligada aos registros para refletir edições.
-5. Não use mais Eduardo / 12345.
-6. Confira as políticas de storage já instaladas pelo SQL anterior e limites de upload no Supabase.
-7. Arquivos .git foram excluídos do ZIP para evitar conflitos de histórico.
+GANTUS - PAINEL E SITE CONECTADOS AO SUPABASE
+
+1. Antes de substituir o projeto, faça backup da versão atual.
+2. Execute ATUALIZAR-SUPABASE.sql no SQL Editor se necessário (a tabela site_content precisa ter section UNIQUE e records jsonb).
+3. Confirme no Supabase Storage que existe o bucket público gantus-media e que o administrador autenticado tem permissões INSERT de objetos. O upload é feito pelo navegador usando a chave publishable.
+4. Publique estes arquivos no GitHub/Vercel. Não copie a pasta .git de um ZIP sobre seu repositório.
+5. Acesse /admin/, faça login e selecione fotos/vídeos. É possível pré-visualizar, definir capa, remover, editar e publicar. As imagens são enviadas ao Storage e os registros a site_content.
+6. No site público, atualize a página para carregar registros remotos. A home sincroniza veículos, entregas, feedbacks, hero, obra, sobre e contato. A página veiculo.html usa ?id= para registros novos.
+7. Se ainda não houver registro remoto em uma seção, o conteúdo de exemplo do HTML permanece. Ao salvar a seção no painel, ela passa a ser gerenciada remotamente.
+8. Segurança: o campo records é publicamente legível, portanto não guarde informações confidenciais ou preços internos nele. O controle de leitura/escrita e Storage depende das políticas RLS instaladas. Teste com uma conta admin e também deslogado.
+9. Este pacote não foi testado contra seu projeto Supabase ao vivo. Confirme uploads, RLS e leitura pública depois do deploy. Se houver erro, envie a mensagem exibida no console.
