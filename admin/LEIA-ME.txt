@@ -1,0 +1,10 @@
+PAINEL ADM GANTUS - PROTÓTIPO LOCAL
+
+Abra admin/index.html em navegador, preferencialmente com Live Server no VS Code.
+O painel NÃO possui autenticação, backend ou publicação. NÃO disponibilize publicamente /admin enquanto não houver autenticação e autorização no servidor.
+Os rascunhos ficam em localStorage do navegador e podem ser perdidos. Não use dados sensíveis.
+Não há upload real de fotos e vídeos. O site público original permanece inalterado.
+
+PRÓXIMA ETAPA: integrar Supabase Auth + Row Level Security + Storage e migrar os componentes públicos para ler os dados do banco, com publicação controlada.
+
+LOGIN DEMONSTRATIVO: Eduardo / 12345. NAO E SEGURO: a senha esta visivel no codigo e nao protege dados ou recursos do servidor. NAO usar dados reais.
