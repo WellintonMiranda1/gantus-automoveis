@@ -15,45 +15,40 @@ function clamp(value, min = 0, max = 1) {
 function updateScrollEffects() {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
-    const heroProgress = clamp(scrollY / windowHeight);
-
-    // HOME: sobe e desaparece conforme o usuário desce.
-    const textProgress = clamp((heroProgress - 0.05) / 0.50);
-    heroContent.style.opacity = 1 - textProgress;
-    heroContent.style.transform = `translateY(${heroProgress * -50}px)`;
-
-    scrollIndicator.style.opacity = Math.max(1 - heroProgress * 4, 0);
-
-    // ESTOQUE: animação ligada diretamente ao scroll.
-    // Ao descer, os elementos sobem e aparecem.
-    // Ao voltar para cima, o movimento acontece ao contrário.
-    revealElements.forEach((element, index) => {
-        const rect = element.getBoundingClientRect();
-
-        // Cada item entra um pouco depois do anterior.
-        const delay = Math.min(index * 0.035, 0.14);
-        const start = windowHeight * (0.94 + delay);
-        const end = windowHeight * (0.56 + delay);
-        const progress = clamp((start - rect.top) / (start - end));
-
-        element.style.opacity = progress;
-        element.style.transform = `translateY(${(1 - progress) * 58}px)`;
-    });
-
+    const heroProgress = clamp(scrollY / Math.max(windowHeight, 1));
+    // O novo Hero não possui .hero-content: proteger o efeito contra elementos ausentes.
+    if (heroContent) {
+        const textProgress = clamp((heroProgress - 0.05) / 0.50);
+        heroContent.style.opacity = 1 - textProgress;
+        heroContent.style.transform = `translateY(${heroProgress * -50}px)`;
+    }
+    if (scrollIndicator) scrollIndicator.style.opacity = Math.max(1 - heroProgress * 4, 0);
     ticking = false;
 }
-
 function requestScrollUpdate() {
     if (!ticking) {
         window.requestAnimationFrame(updateScrollEffects);
         ticking = true;
     }
 }
-
 window.addEventListener("scroll", requestScrollUpdate, { passive: true });
 window.addEventListener("resize", requestScrollUpdate);
-
 updateScrollEffects();
+
+// Evita seções invisíveis caso a animação não execute ou o navegador abra em âncora.
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.04, rootMargin: "0px 0px 100px 0px" });
+    revealElements.forEach(element => observer.observe(element));
+} else {
+    revealElements.forEach(element => element.classList.add("is-visible"));
+}
 
 // =========================
 // ESTOQUE - CARROSSEL GANTUS
@@ -65,7 +60,7 @@ if (carousel) {
     const prevButton = document.querySelector(".carousel-arrow-left");
     const nextButton = document.querySelector(".carousel-arrow-right");
     const dotsContainer = document.querySelector(".carousel-dots");
-    let activeIndex = 2;
+    let activeIndex = 0;
     let dragStartX = 0;
     let dragging = false;
 
@@ -73,7 +68,7 @@ if (carousel) {
         const dot = document.createElement("button");
         dot.className = "carousel-dot";
         dot.type = "button";
-        dot.setAttribute("aria-label", `Ver veículo ${index + 1}`);
+        dot.setAttribute("aria-label", `Ver entrega ${index + 1}`);
         dot.addEventListener("click", () => { activeIndex = index; renderCarousel(); });
         dotsContainer.appendChild(dot);
     });
@@ -245,3 +240,39 @@ if (mobileFilterToggle && inventoryToolsMobile) {
         mobileFilterToggle.setAttribute("aria-expanded", String(open));
     });
 }
+
+// FEEDBACKS — MESMA EXPERIÊNCIA 3D DO ANTIGO CARROSSEL DE DESTAQUES
+const feedbackCarousel = document.querySelector('#feedbackTrack');
+if (feedbackCarousel) {
+    const cards = [...feedbackCarousel.querySelectorAll('.feedback-card')];
+    const prev = document.querySelector('#feedbackPrev');
+    const next = document.querySelector('#feedbackNext');
+    let active = 0, startX = 0;
+    const render = () => {
+        cards.forEach((card, index) => {
+            let offset = index - active;
+            const half = Math.floor(cards.length / 2);
+            if (offset > half) offset -= cards.length;
+            if (offset < -half) offset += cards.length;
+            card.style.setProperty('--offset', offset);
+            card.classList.toggle('is-active', offset === 0);
+            card.classList.toggle('is-hidden', Math.abs(offset) > 2);
+            card.setAttribute('aria-hidden', Math.abs(offset) > 2 ? 'true' : 'false');
+        });
+    };
+    const move = delta => { active = (active + delta + cards.length) % cards.length; render(); };
+    prev?.addEventListener('click', () => move(-1));
+    next?.addEventListener('click', () => move(1));
+    feedbackCarousel.addEventListener('pointerdown', event => { startX = event.clientX; });
+    feedbackCarousel.addEventListener('pointerup', event => {
+        const dx = event.clientX - startX;
+        if (Math.abs(dx) > 45) move(dx < 0 ? 1 : -1);
+    });
+    feedbackCarousel.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft') move(-1);
+        if (event.key === 'ArrowRight') move(1);
+    });
+    feedbackCarousel.tabIndex = 0;
+    render();
+}
+
