@@ -1,0 +1,7 @@
+1. Abra Supabase > SQL Editor > New query e execute INSTALAR-SUPABASE.sql.
+2. Entre em /admin/ com o e-mail e senha do usuário criado no Supabase.
+3. Teste cadastrando e editando itens. Os registros ficam em public.site_content e os uploads no bucket gantus-media.
+4. IMPORTANTE: este pacote integra login, CRUD e uploads no painel; a vitrine pública ainda usa os dados estáticos existentes e precisa ser ligada aos registros para refletir edições.
+5. Não use mais Eduardo / 12345.
+6. Confira as políticas de storage já instaladas pelo SQL anterior e limites de upload no Supabase.
+7. Arquivos .git foram excluídos do ZIP para evitar conflitos de histórico.
